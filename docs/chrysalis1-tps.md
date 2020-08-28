@@ -4,11 +4,9 @@ TL;DR: IF claims that the last stress test of Chrysalis Phase 1, the network ach
 
 Tweet: 
 
-[https://twitter.com/iotatoken/status/1296112002155393024](https://twitter.com/iotatoken/status/1296112002155393024)
+[https://twitter.com/iotatoken/status/1296112002155393024](https://twitter.com/iotatoken/status/1296112002155393024): @iotatoken claiming 1000 TPS.
 
-@iotatoken claims 1000TPS.
-
-This is highly misleading for multiple reasons, and the true number is closer to 70-100 TPS.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">It&#39;s official - The <a href="https://twitter.com/hashtag/IOTA?src=hash&amp;ref_src=twsrc%5Etfw">#IOTA</a> network now supports over 1000TPS! With this substantial increase, nodes can sustain higher transaction volumes &amp; more transaction intensive applications. We’re excited to see the applications &amp; use cases enabled with this new throughput! <a href="https://twitter.com/hashtag/Chrysalis?src=hash&amp;ref_src=twsrc%5Etfw">#Chrysalis</a> <a href="https://t.co/RtVbiytCO3">pic.twitter.com/RtVbiytCO3</a></p>&mdash; IOTA (@iotatoken) <a href="https://twitter.com/iotatoken/status/1296112002155393024?ref_src=twsrc%5Etfw">August 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 # IOTA defines "TPS" differently than everyone else
 
