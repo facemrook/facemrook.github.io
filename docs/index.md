@@ -12,3 +12,4 @@ of the [IOTA Foundation](http://iota.org).
 
 * [FAQ](/faq)
 * [Chrysalis Pt. 1 TPS](/chrysalis1-tps)
+* [Sharding](/sharding)
