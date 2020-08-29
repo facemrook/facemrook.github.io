@@ -1,3 +1,8 @@
+---
+title:  "IF exaggerates Chrysalis TPS by 10x"
+description: IF claims that the last stress test of Chrysalis Phase 1, the network achieved 1000 TPS. In reality, this number is closer to 70-100. The IF knows this.
+---
+
 # IF exaggerates Chrysalis TPS by 10x
 
 TL;DR: IF claims that the last stress test of Chrysalis Phase 1, the network achieved 1000 TPS. In reality, this number is closer to 70-100, **and the IF knows this**.

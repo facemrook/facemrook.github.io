@@ -5,10 +5,7 @@
 layout: default
 ---
 
-My name is Buffy.
-
-I have decided to carry out an investigation into the development practices
-of the [IOTA Foundation](http://iota.org).
+My name is Buffy. I do premium IOTA tech consulting. Whether you like it or not.
 
 * [FAQ](/faq)
 * [Chrysalis Pt. 1 TPS](/chrysalis1-tps)

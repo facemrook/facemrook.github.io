@@ -1,3 +1,7 @@
+---
+title:  "Sharding in IOTA: A review"
+description: IOTA has not produced a design so far. Below are my notes & thoughts on Hans' design, on why I believe it won't work, and on why IOTA should be prioritizing a solid sharding design over a Coordicide design & implementation.
+---
 # Sharding
 
 TL;DR: Sharding is necessary for scaling a permissionless DLT. IOTA has not

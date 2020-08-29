@@ -16,7 +16,7 @@
 title: Buffy's IOTA Facts
 email: iotacanscale@mailbox.org
 description: >- # this means to ignore newlines until "baseurl:"
-        Hi I am buffy
+        Hi I am buffy. I do premium IOTA tech consulting.
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://facemrook.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: facemrook
@@ -28,6 +28,8 @@ markdown: kramdown
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
+
+logo: /buffy-iota.png
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
