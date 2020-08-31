@@ -9,9 +9,9 @@ produced a design so far. Below are my notes & thoughts on Hans' design, on why
 I believe it won't work, and on why IOTA should be prioritizing a solid
 sharding design over a Coordicide design & implementation.
 
-Edit 2020-08-29: *The below represents a summary of what is publicly known as of
-2020-08-27, to the best of my knowledge/skills. Hans has said that he is
-working on an extended, more formal write-up of his design.*
+Edit 2020-08-29: *Hans has said that he is working on an extended, more formal
+write-up of his design. The below represents a summary of what is publicly
+known as of 2020-08-27, to the best of my knowledge/skills. Will update this article when that lands.*
 
 # Dynamic/Fluid Sharding (Hans' design)
 

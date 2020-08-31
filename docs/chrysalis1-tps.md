@@ -1,11 +1,11 @@
 ---
-title:  "IF exaggerates Chrysalis TPS by 10x"
-description: IF claims that the last stress test of Chrysalis Phase 1, the network achieved 1000 TPS. In reality, this number is closer to 70-100. The IF knows this.
+title:  "IF exaggerates Chrysalis TPS by 4x"
+description: IF claims that in the stress test of Chrysalis 1, IOTA achieved 1000 TPS. In reality, this number is closer to 250 TPS, and 35-100 TPS on "IoT-devices" (e.g. RPi4). The IF knows this.
 ---
 
-# IF exaggerates Chrysalis TPS by 10x
+# IF exaggerates Chrysalis TPS by 4x
 
-TL;DR: IF claims that the last stress test of Chrysalis Phase 1, the network achieved 1000 TPS. In reality, this number is closer to 70-100, **and the IF knows this**.
+TL;DR: IF claims that the last stress test of Chrysalis Phase 1, the network achieved 1000 TPS. In reality, this number is closer to 250. Low-power "IoT" devices (e.g. Raspberry Pi) started failing even earlier, between 35-100 TPS, **and the IF knows this**.
 
 Tweet: 
 
@@ -38,7 +38,7 @@ TL;DR: You can't compare IOTA "Transactions" with other DLT's transactions. Bund
 - Added 2020-08-22: The IOTA-community internal discussions following this article made it clear that this was not a well-known fact. The discussion in #general alone included multiple foundation members (Navin, Mark, Luca, muXxer) and went on for hours; well known community members weren't aware of this either ([tweet1](https://twitter.com/dennisnagpal1/status/1296899495230418945), [tweet2](https://twitter.com/durerus/status/1296882900189818880)).
 **A large chunk of IOTAs own community believed that the 1000 TPS was refering to 'value TPS' after reading @iotatoken's tweet. This is the definition of misleading.**
 
-# Nodes were falling off the network at 20-40% of max TPS
+# Raspberry Pis were falling off the network at 20-40% of max TPS
 
 TL;DR: Raspberry Pis, explicitly recommended by the gohornet team, were falling off the network at 150-400 "TPS" (or, 1/4 of those, 35-100 value TPS).
 
@@ -101,3 +101,7 @@ The two "additional" arguments here are
 
 - *"but zero-value transactions would only be one per bundle, so BPS would be misleading true"* - well this is true, but it's just another way of looking at the same argument. When a DLT talks about "TPS", people expect *"funds moved per second"*. If BPS doesn't capture that, and "IOTA-TPS" doesn't capture that, that needs to be made explicit. if you call your metric TPS, you need to publish something that's comparable, or state that it's not comparable. Everything else is just plain misleading. (Why not just count *bundles-with-value-transactions* as a separate metric, and publish that? Problem solved.)
 - *"With Chrysalis pt2 this will no longer be an issue"*. As stated above, the tweet is about part 1. Part 2 is months out. Nobody knows how that will perform (even though I expect it to perform better).
+
+Edit 2 (2020-08-30): Changed the title from "10x" to "4x" - Gerrit correctly pointed out that you can either assume knowledge of IOTA (=> be surprised that Raspberry PIs can't keep up, but know that TPS = data TPS), or not have that knowledge (=> expect TPS = value TPS, but don't assume Raspberry PIs are in the network) - but not both at the same time.
+
+I decided to keep the "4x" value/data discrepancy because this seems to be what most people (community members included) seemed to be most surprised by.
