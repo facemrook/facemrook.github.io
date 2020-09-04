@@ -25,8 +25,8 @@ Simplified description:
 - In other words: The Coordinator's milestones can now approve *anything*, and
   it is up to the nodes to figure out which transactions are valid and which
   ones aren't.
-- This creates a 100% confirmation rate, because every transaction can now be
-  considered valid. This also removes the need for reattach & promote, as there
+- This creates a 100% confirmation rate, because every transaction (valid or
+  not) can now be confirmed. This also removes the need for reattach & promote, as there
   are no invalid branches anymore. It also simplifies GTTA, because every tip can
   be attached to, valid or not.
 - But **White Flag is a temporary thing: It can't work with Coordicide**, so it
