@@ -4,8 +4,6 @@ description: Zero-value "transactions" (messages) are fun for hobbyists, but giv
 ---
 # Zero-Value transactions: Fun but worthless
 
-## Rough draft. Discussion in \#serious\_tech\_talk
-
 TL;DR: Zero-value "transactions" are fun for hobbyists, but give no guarantees
 to developers & industry partners, making it a bad platform to build production
 systems on.
@@ -42,9 +40,10 @@ If you commit to a single node, and get an OK back from the RPC, there are still
    takes a very (?) long time, the node might just prune the transaction before
    it is even sent[^pruning].
 
-At the time of writing, [thetangle.org](http://thetangle.org/) shows a 97%
-confirmation rate, even with the temporary White Flag boost. This means 3 out
-of a 100 writes fail. For comparison, AWS DynamoDB will start [refunding
+At the time of writing, [thetangle.org](http://thetangle.org/) shows a 97%[^tps]
+confirmation rate, even with the [temporary White Flag
+boost](/chrysalis1-whiteflag). This means 3 out of a 100 writes fail. For
+comparison, AWS DynamoDB will start [refunding
 money](https://aws.amazon.com/dynamodb/sla/) below 99.99% ("standard") and
 99.999% ("global") availability.
 
@@ -68,6 +67,14 @@ client is given an OK**. IOTA can't guarantee any of these, by design.
     writes, and similar effects (although not as extreme) happen with other
     components, too. Have a look at your Task Manager and check your utilizations,
     and compare that with the 100% goal that data center operators strive for.
+
+[^tps]: There is the argument floating around that "these are invalid transactions". Then
+    * Why are "invalid" transactions being counted in TPS, but not CTPS?
+    * There's certainly evidence that valid transactions are still not being
+      confirmed post-chrysalis (search for "promote" in official discord),
+    * Once White Flag is removed, in the productionization of Coordicide, the
+      conf rate will drop again anyway,
+    * Even if not, my argument certainly works with 99%, too.
 
 ## 2. Nodes may prune at any time.
 
@@ -249,3 +256,4 @@ The tangle is a fun platform to experiment on and build prototypes, but it is
 useless when you're trying to build actual applications on top of them.
 
 Happy to hear your feedback, feel free to send me an email and/or twitter.
+Or stop by #serious\_tech\_talk in CinTan's Spec!
