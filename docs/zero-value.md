@@ -6,14 +6,16 @@ description: Zero-value "transactions" (messages) are fun for hobbyists, but giv
 
 ## Rough draft. Discussion in \#serious\_tech\_talk
 
-TL;DR: Zero-value "transactions" are fun for hobbyists, but give no guarantees to developers & industry partners, making it a bad platform to build production systems on.
+TL;DR: Zero-value "transactions" are fun for hobbyists, but give no guarantees
+to developers & industry partners, making it a bad platform to build production
+systems on.
 
 Note: Per the reaction on a previous article, I'm always happy to consider
 feedback & will update the article where I'm wrong. However, I do only consider
 things that are actually specified. Off-hand ideas thrown around on Discord are
 hard to verify, hard to analyze & hard to argue with.
 
-# **Zero-Value Transactions are unreliable**
+# Zero-Value Transactions are unreliable
 
 Popquiz:
 
@@ -28,7 +30,7 @@ your chosing, what are your guarantees about the data?
 
 For any other database systems (e.g. AWS DynamoDB), the answers are **Yes, Not needed, Yes/Yes/Yes** and **"when wanted & legal"**. For IOTA, the answers are **No, No, No/No/Maybe** and **in a problematic way.**
 
-## **1. Data might not persist in the Tangle, even if your node says so**
+## 1. Data might not persist in the Tangle, even if your node says so
 
 If you commit to a single node, and get an OK back from the RPC, there are still plenty of error cases which can result in your transaction being dropped.
 
@@ -40,7 +42,17 @@ If you commit to a single node, and get an OK back from the RPC, there are still
    takes a very (?) long time, the node might just prune the transaction before
    it is even sent[^pruning].
 
-At the time of writing, [thetangle.org](http://thetangle.org/) shows a 97% confirmation rate, even with the temporary White Flag boost. This means 3 out of a 100 writes fail. For comparison, AWS DynamoDB will start [refunding money](https://aws.amazon.com/dynamodb/sla/) below 99.99% ("standard") and 99.999% ("global") availability.
+At the time of writing, [thetangle.org](http://thetangle.org/) shows a 97%
+confirmation rate, even with the temporary White Flag boost. This means 3 out
+of a 100 writes fail. For comparison, AWS DynamoDB will start [refunding
+money](https://aws.amazon.com/dynamodb/sla/) below 99.99% ("standard") and
+99.999% ("global") availability.
+
+Production-ready database system create reliability from unreliable components
+by making sure the data is properly replicated, persisted to disk and (in case
+of strongly consistent systems) that consensus exists that the write should be
+applied. This normally happens in a few hundred miliseconds, **before the
+client is given an OK**. IOTA can't guarantee any of these, by design.
 
 [^conflicts]: I know that hans has mentioned an “approval switch” to make this
     problem less bad. This seems to break merkle proofs & the DAG approval
@@ -57,11 +69,12 @@ At the time of writing, [thetangle.org](http://thetangle.org/) shows a 97% confi
     components, too. Have a look at your Task Manager and check your utilizations,
     and compare that with the 100% goal that data center operators strive for.
 
-## **2. Nodes may prune at any time.**
+## 2. Nodes may prune at any time.
 
 - Nodes might prune at any time. The default in Hornet is
   [7 days for Mainnet](https://github.com/gohornet/hornet/blob/c82de7ec57b5aed7528ffc8ed325430ec619b096/config.json#L70),
   so after only a week a transaction is likely to be gone.
+- Nodes may actually **have** to prune, for GDPR reasons (see blow).
 - Nothing stops node owners to configure the node to just update their ledger
   state and *immediately* prune.
 - Nodes may also prune value transactions, they only need to retain the ledger
@@ -82,7 +95,7 @@ grant](https://utils.iota.org/transaction/TBNWXUM9MNIS9KINDSGZUIUMYC9VKCDKDTEIEA
 [thetangle.org](http://thetangle.org/) and trying one of the recent ones on
 [utils.iota.org](http://utils.iota.org/) does work for me.
 
-## **3. Data is immutable (until pruned), but that's hardly a good thing**
+## 3. Data is immutable (until pruned), but that's hardly a good thing
 
 - Immutable data is not necessarily good (GDPR-compliance)
 - And yes, while most other blockchains suffer from this too, most other
@@ -96,9 +109,9 @@ grant](https://utils.iota.org/transaction/TBNWXUM9MNIS9KINDSGZUIUMYC9VKCDKDTEIEA
   Not to mention that there are no GDPR-equivalent regulations in multiple other
   countries and US States.
 
-# **Other statements that don't hold up**
+# Other statements that don't hold up
 
-## **Messages are verified**
+## Messages are verified
 
 The argument here is that the Tangle does create validation through the Merkle
 tree (some form of verification).
@@ -164,7 +177,9 @@ technology)
 
 ## "If you need persistence, you can run a permanode"
 
-First of all, I don't think there is a single use-case for zero-value transaction (in a production environment) that does *not* require at least *some* form of reliable persistence. But permanodes do a poor job at this:
+First of all, I don't think there is a single use-case for zero-value
+transaction (in a production environment) that does *not* require at least
+*some* form of reliable persistence. But permanodes do a poor job at this:
 
 - Running a full permanode would be equivalent to running a node without
   pruning. But now you are paying for a database to store a full copy of the
@@ -190,6 +205,25 @@ why not skip the tangle & write straight to a regular database?
     consumer-grade hardware (or even Raspberry Pis) because, at the end of the day,
     the additional reliability makes it worth it.
 
+## "The tangle is not a database anyway"
+
+In that case, the remaining use-case is as a "communication system". But
+
+* As stated above, the Tangle has poor reliability - why put it in between you
+  and your database in the first place?
+* Systems that are significantly more performant, significantly more reliable
+  and way cheaper to operate already exist. ZMQ and co. come to mind. All major
+  cloud providers offer pubsub solutions, too. Heck, even BitTorrent & co fall
+  into this space.
+* If you need a database on the backend anyway, and you need everyone to
+  be able to read it, why not open up the read ACLs to the public?
+  Even if you need more advanced features, like a simple REST API Gateway with
+  basic rate limiting etc. - *cost per TPS* on EC2/Lambda should be a fraction
+  of that of running an IOTA node.
+
+The Tangle doesn't really add anything as a communication system, it only makes
+a hard problem worse.
+
 # Summary
 
 There are other problems here, that are similarly problematic, like
@@ -205,10 +239,11 @@ mango"](https://medium.com/@kaistinchcombe/decentralized-and-trustless-crypto-pa
 
 I might address those in a later post.
 
-Production-ready database system create reliability from unreliable components
-by making sure the data is properly replicated, persisted to disk and (in case
-of strongly consistent systems) that consensus exists that the write should be
-applied. IOTA can't guarantee any of these, by design.
+I am aware that you can make arguments (for a post-coordicide world) that
+"it is decentralized", and that is certainly a valid argument. The question
+is whether users, developers are willing to put up with the above problems,
+just to have decentralization. After all, some IF leaders have pointed out
+that industry partners do not actually care about the Coordinator that much.
 
 The tangle is a fun platform to experiment on and build prototypes, but it is
 useless when you're trying to build actual applications on top of them.
