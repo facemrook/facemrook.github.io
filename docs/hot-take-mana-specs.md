@@ -8,12 +8,15 @@ date: 2020-09-11
 
 
 **TL;DR**: Mana is the main Sybil protection mechanism for Coordicide, 15+ months
-in the making. The specification answers virtually no questions, and
+in the making. [The specification](https://github.com/iotaledger/goshimmer/blob/22f88a897fd6729980fdca3f08f16bb71b0d3caf/docs/001-mana_proposal.md)
+answers virtually no questions, and
 (explicitly and implicitly) opens up dozens more.
 
 IOTA managed to turn the "one, constant mana" from the whitepaper into 4
 different manas, in groups of two, leaving it completely unspecified what you
 would use each one for and how to combine them.
+
+*Updated 2020-09-12: Added section at bottom to address criticism*
 
 **Note**: I think lzpap did a good job at collecting the available data & deriving
 an implementation from it. Even though I do have issues with the implementation
@@ -25,6 +28,7 @@ in bullet points. It's barely more than a rough draft, but it's already about
 as long as the "high-level" design section in the specs.  You're welcome. Some
 of these questions I believe are fundamentally very, very
 hard to solve and are completely ignored.
+
 
 ## The specification adds complexity without telling anyone why.
 - Why do you need consensus Mana *and* access Mana? Why can't you use the same one?
@@ -95,7 +99,12 @@ None of the above matters, because at the end of the day:
   it's actually influencing the system. Attacks on it can only happen in the
   latter, but the test is only for the former.
   
-  *This would be fine*, it needs to be tested somehow, but the document uses this as an excuse to "fill in the blanks later".
+  *I agree that this needs to be tested somehow*. But the document uses this as an excuse to "fill in the blanks later".
+
+  You can **only test the steady state** behavior of mana. You can not test
+  whether mana actually withstands attacks. Virtually all discussions on attack prevention
+  need to happen theoretically, in the specs, and this is just completely absent.
+  
 
 Anyway, as trivial as it is to poke holes into this, I don't want to spend too
 much time on this. Happy to dig deeper if Mark gives me EDF funds to do so.
@@ -107,3 +116,24 @@ IOTA is trying to build exponentially decaying systems based on multiple, rapidl
 inputs, to be the basis for all their other modules. And after 15 months of research,
 they've written down one equation. Good, but now comes the hard part, finding values and
 making the calculation consistent across distributed, and potentially hostile, networks. See you in 15-50 years or so ;)
+
+
+## Edit 2020-09-12: Addressing some criticism on this article
+
+The main criticism seems to be that there are
+more internal specs that are yet unpublished, which address the mentioned problems. However, the [research
+update](https://blog.iota.org/iota-research-status-update-september-2020-72720fa1c032)
+referred to the specification as follows:
+
+>  This month we have worked on turning the mana research specification into a
+>  more detailed
+>  [document](https://github.com/iotaledger/goshimmer/blob/22f88a897fd6729980fdca3f08f16bb71b0d3caf/docs/001-mana_proposal.md)
+>  that we are currently using to implement mana in Pollen. 
+
+Notice the past tense in "turned", the "detailed", and the "currently using to implement mana".
+There is every implication that *this is the spec*, and no implication that there is
+any other in-progress document.
+
+The main criticism seem to be on "iterative development", which I've already addressed in the last
+bullet point, but have re-worded to be a bit more specific.
+
