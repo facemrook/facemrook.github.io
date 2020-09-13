@@ -12,11 +12,20 @@ in the making. [The specification](https://github.com/iotaledger/goshimmer/blob/
 answers virtually no questions, and
 (explicitly and implicitly) opens up dozens more.
 
-IOTA managed to turn the "one, constant mana" from the whitepaper into 4
-different manas, in groups of two, leaving it completely unspecified what you
-would use each one for and how to combine them.
+IOTA has published the Mana specifications in their [research update](https://blog.iota.org/iota-research-status-update-september-2020-72720fa1c032):
+
+>  This month we have worked on turning the mana research specification into a
+>  more detailed
+>  [document](https://github.com/iotaledger/goshimmer/blob/22f88a897fd6729980fdca3f08f16bb71b0d3caf/docs/001-mana_proposal.md)
+>  that we are currently using to implement mana in Pollen. 
+
+In this specification, IOTA managed to turn the "one, constant mana" from the
+whitepaper into 4 different manas, in groups of two, leaving it completely
+unspecified what you would use each one for and how to combine them.
 
 *Updated 2020-09-12: Added section at bottom to address criticism*
+
+*Updated 2020-09-13: Added quote from research update to beginning.*
 
 **Note**: I think lzpap did a good job at collecting the available data & deriving
 an implementation from it. Even though I do have issues with the implementation
@@ -134,6 +143,7 @@ Notice the past tense in "turned", the "detailed", and the "currently using to i
 There is every implication that *this is the spec*, and no implication that there is
 any other in-progress document.
 
-The main criticism seem to be on "iterative development", which I've already addressed in the last
-bullet point, but have re-worded to be a bit more specific.
+The other criticism seem to be that it is fine to do "iterative development" (build a bit of specs, try them out in code,
+improve on specs and repeat). I've already addressed in the last bullet point why this won't work in this case,
+but have re-worded the point to be a bit more specific.
 
