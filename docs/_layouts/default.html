@@ -57,5 +57,17 @@
       ga('send', 'pageview');
     </script>
     {% endif %}
+	<script>
+	const headings = document.querySelectorAll('h2,h3'); // 1
+const linkContent = '🔗'; // 2
+for (const heading of headings) { // 3
+    icon = '<i class="fa fa-link"></i>...';
+    const linkIcon = document.createElement('a'); // 4
+    linkIcon.setAttribute('href', `#${heading.id}`); // 5
+    linkIcon.setAttribute('class', 'header-link');
+    linkIcon.innerHTML = linkContent; // 6
+    heading.appendChild(linkIcon); // 7
+ };
+	</script>
   </body>
 </html>
