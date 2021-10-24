@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
         Hi I am buffy. I do premium IOTA tech consulting.
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://facemrook.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: facemrook
+twitter_username: fudsfuddy
 
 google_analytics: UA-175983325-3
 
@@ -32,7 +32,7 @@ plugins:
 logo: /buffy-iota.png
 
 twitter:
-  username: facemrook
+  username: fudsfuddy
   card: summary
 
 defaults:
